@@ -37,7 +37,7 @@ four = Succ three
 --   >>> pred three
 --   Succ (Succ Zero)
 --   
-pred:: Nat -> Nat
+pred :: Nat -> Nat
 pred (Zero)   = Zero
 pred (Succ n) = n
 
@@ -50,7 +50,7 @@ pred (Succ n) = n
 --   >>> isZero two
 --   False
 --
-isZero:: Nat -> Bool
+isZero :: Nat -> Bool
 isZero (Zero) = True
 isZero _      = False
 
@@ -63,7 +63,7 @@ isZero _      = False
 --   >>> toInt three
 --   3
 --
-toInt:: Nat -> Int
+toInt :: Nat -> Int
 toInt (Zero) = 0
 toInt (Succ x) = toInt x + 1
 
@@ -82,7 +82,7 @@ toInt (Succ x) = toInt x + 1
 --   >>> add two three == add three two
 --   True
 --   
-add:: Nat -> Nat -> Nat
+add :: Nat -> Nat -> Nat
 add Zero x = x
 add y Zero = y
 add x y    = add (pred x) (Succ y)
@@ -103,7 +103,7 @@ add x y    = add (pred x) (Succ y)
 --   >>> sub one three
 --   Zero
 --
-sub:: Nat -> Nat -> Nat
+sub :: Nat -> Nat -> Nat
 sub Zero x = Zero
 sub x y    = sub (pred x) (pred y)
 
@@ -119,7 +119,7 @@ sub x y    = sub (pred x) (pred y)
 --   >>> gt two two
 --   False
 --
-gt:: Nat -> Nat -> Bool
+gt :: Nat -> Nat -> Bool
 gt Zero x = False
 gt y Zero = True
 gt x y    = gt (pred x) (pred y)
@@ -139,7 +139,7 @@ gt x y    = gt (pred x) (pred y)
 --   >>> toInt (mult three three)
 --   9
 --
-mult:: Nat -> Nat -> Nat
+mult :: Nat -> Nat -> Nat
 mult Zero a        = Zero
 mult b Zero        = Zero
 mult a (Succ Zero) = a
@@ -157,7 +157,7 @@ mult a b           = add (a) (mult (a) (pred b))
 --   >>> toInt (sum [one,two,three])
 --   6
 --
-sum:: [Nat] -> Nat
+sum :: [Nat] -> Nat
 sum list = foldr (add) Zero list
 
 

@@ -25,7 +25,7 @@ t2 = Node 6 (Node 2 (Leaf 1) (Node 4 (Leaf 3) (Leaf 5)))
 
 -- | A function that returns the value of the object in
 --   tree, no matter if a leaf or node
-getObjVal:: Tree -> Int
+getObjVal :: Tree -> Int
 getObjVal (Leaf i)     = i
 getObjVal (Node i l r) = i
 
@@ -64,7 +64,7 @@ leftmost (Node _ l _) = leftmost l
 --   >>> rightmost t2
 --   9
 --
-rightmost:: Tree -> Int
+rightmost :: Tree -> Int
 rightmost (Leaf i)     = i
 rightmost (Node _ _ r) = rightmost r
 
@@ -85,7 +85,7 @@ rightmost (Node _ _ r) = rightmost r
 --   >>> maxInt t2
 --   9
 --
-maxInt:: Tree -> Int
+maxInt :: Tree -> Int
 maxInt (Leaf i)     = i
 maxInt (Node i l r) = maximum [i, maxInt l, maxInt r]
 
@@ -107,7 +107,7 @@ maxInt (Node i l r) = maximum [i, maxInt l, maxInt r]
 --   >>> minInt t2
 --   1
 --
-minInt:: Tree -> Int
+minInt :: Tree -> Int
 minInt (Leaf i)     = i
 minInt (Node i l r) = minimum [i, minInt l, minInt r]
 
@@ -126,7 +126,7 @@ minInt (Node i l r) = minimum [i, minInt l, minInt r]
 --   >>> sumInts (Node 10 t1 t2)
 --   100
 --
-sumInts:: Tree -> Int
+sumInts :: Tree -> Int
 sumInts (Leaf i)     = i
 sumInts (Node i l r) = sum [i, sumInts l, sumInts r]
 
@@ -145,7 +145,7 @@ sumInts (Node i l r) = sum [i, sumInts l, sumInts r]
 --   >>> preorder t2
 --   [6,2,1,4,3,5,8,7,9]
 --   
-preorder:: Tree -> [Int]
+preorder :: Tree -> [Int]
 preorder (Leaf i)     = [i]
 preorder (Node i l r) = [i] ++ preorder l ++ preorder r
 
@@ -163,7 +163,7 @@ preorder (Node i l r) = [i] ++ preorder l ++ preorder r
 --   >>> inorder t2
 --   [1,2,3,4,5,6,7,8,9]
 --   
-inorder:: Tree -> [Int]
+inorder :: Tree -> [Int]
 inorder (Leaf i)     = [i]
 inorder (Node i l r) = inorder l ++ [i] ++ inorder r
 
@@ -182,7 +182,7 @@ inorder (Node i l r) = inorder l ++ [i] ++ inorder r
 --   >>> isBST t2
 --   True
 --   
-isBST:: Tree -> Bool
+isBST :: Tree -> Bool
 isBST (Leaf i)     = True
 isBST (Node i l r) = (isBST l) && (getObjVal l < i) && (getObjVal r > i) && (isBST r)
 
@@ -202,6 +202,6 @@ isBST (Node i l r) = (isBST l) && (getObjVal l < i) && (getObjVal r > i) && (isB
 --   >>> inBST 10 t2
 --   False
 --   
-inBST:: Int -> Tree -> Bool
+inBST :: Int -> Tree -> Bool
 inBST objVal (Leaf i)      = objVal == i
 inBST objVal (Node i l r ) = objVal == i || inBST objVal l || inBST objVal r
